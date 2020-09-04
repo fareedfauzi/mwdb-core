@@ -39,7 +39,7 @@ describe("Config view test - Malwarecage", function () {
     cy.contains("Configs").click();
 
     cy.get("@configId").then((configId) => {
-      cy.contains(configId).click();
+      cy.get('.d-none a[href*="'+configId+'"] > div').click();
       cy.contains("Config " + configId);
     });
 
@@ -54,6 +54,12 @@ describe("Config view test - Malwarecage", function () {
     cy.contains("plain");
     cy.contains("test");
     cy.contains("Upload time");
+
+    cy.get("a").contains("Relations").click()
+    cy.get("g[class='node expanded-node']");
+
+    cy.get("a").contains("Preview").click()
+    cy.get("div[class='ace_line']");
 
     cy.visit("/config/fake");
     cy.contains(

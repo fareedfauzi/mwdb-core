@@ -32,7 +32,7 @@ describe("Sample view test - Malwarecage", function () {
       browserLogin(Cypress.env("user"), Cypress.env("password"));
 
       cy.contains("Samples").click();
-      cy.contains(fileData.md5).click();
+      cy.get('.d-none a[href*="'+fileData.md5+'"] > div').click();
       cy.contains(fileData.md5);
       cy.contains("Filename");
       cy.contains("TEST");
@@ -46,8 +46,16 @@ describe("Sample view test - Malwarecage", function () {
       cy.contains("ssdeep");
       cy.contains("Upload time");
 
+      cy.get("a").contains("Relations").click()
+      cy.get("g[class='node expanded-node']");
+
+      cy.get("a").contains("Preview").click()
+      cy.get("div[class='ace_line']");
+
       cy.contains("Samples").click();
-      cy.contains(fileData.sha256).click();
+
+      cy.get('.d-none a[href*="'+fileData.sha256+'"] > div').should("be.visible").click();
+
       cy.contains(fileData.sha256);
 
       cy.visit("/sample/fake");
