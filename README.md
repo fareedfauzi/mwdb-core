@@ -14,6 +14,7 @@ If you want to learn more about setting up your own mwdb-core instance or mwdb.c
 sudo apt-get install build-essential libffi-dev python3 python3-dev python3-pip libfuzzy-dev
 pip3 install ssdeep
 
+sudo apt install docker.io
 docker run -d --name mwdb-postgres -e POSTGRES_DB=mwdb -e POSTGRES_USER=mwdb -e POSTGRES_PASSWORD=mwdb -p 127.0.0.1:54322:5432 postgres
 
 pip3 install wheel
