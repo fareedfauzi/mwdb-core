@@ -10,6 +10,43 @@ Under the hood of [mwdb.cert.pl service](https://mwdb.cert.pl) hosted by CERT.pl
 
 If you want to learn more about setting up your own mwdb-core instance or mwdb.cert.pl service: go to the [mwdb-core documentation](https://mwdb.readthedocs.io/en/latest/).
 
+```
+sudo apt-get install build-essential libffi-dev python3 python3-dev python3-pip libfuzzy-dev
+pip3 install ssdeep
+
+docker run -d --name mwdb-postgres -e POSTGRES_DB=mwdb -e POSTGRES_USER=mwdb -e POSTGRES_PASSWORD=mwdb -p 127.0.0.1:54322:5432 postgres
+
+pip3 install wheel
+pip3 install mwdb-core
+
+.local/bin/mwdb-core configure
+
+screen
+.local/bin/mwdb-core run
+(ctrl ar)
+
+sudo apt-get update
+sudo apt-get install nginx
+sudo unlink /etc/nginx/sites-enabled/default
+cd etc/nginx/sites-available/
+nano reverse-proxy.conf
+paste this...
+
+"
+server {
+    listen 80;
+    location / {
+        proxy_pass http://192.x.x.2;
+    }
+}
+"
+
+sudo ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf\
+mv default default.bak
+service nginx configtest
+service nginx restart
+```
+
 ## Features
 
 - Storage for malware binaries and static/dynamic malware configurations
