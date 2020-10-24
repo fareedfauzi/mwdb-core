@@ -21,8 +21,9 @@ pip3 install wheel
 pip3 install mwdb-core
 
 ~/.local/bin/mwdb-core configure
-enter 3x
+choose 2
 postgresql://mwdb:mwdb@127.0.0.1:54322/mwdb
+enter 2x
 
 screen
 ~/.local/bin/mwdb-core run
