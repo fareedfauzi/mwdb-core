@@ -20,12 +20,12 @@ sudo docker run -d --name mwdb-postgres -e POSTGRES_DB=mwdb -e POSTGRES_USER=mwd
 pip3 install wheel
 pip3 install mwdb-core
 
-.local/bin/mwdb-core configure
+~/.local/bin/mwdb-core configure
 enter 3x
 postgresql://mwdb:mwdb@127.0.0.1:54322/mwdb
 
 screen
-.local/bin/mwdb-core run
+~/.local/bin/mwdb-core run
 (ctrl ar)
 
 sudo apt-get update
